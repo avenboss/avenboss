@@ -2,6 +2,7 @@ import sys
 
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from pymongo import MongoClient
+from PyQt5 import QtCore
 
 #include UI file which has 'pyuic5' from ui file developed by QT Designer
 from myMDB import Ui_MainWindow
@@ -38,8 +39,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 if (len(collist)>0):
                     for x in range(len(collist)):
                         print(collist[x])
-            #         if self.LSTW_collection.findItems(collist[x]):
-                        self.LSTW_collection.addItem(collist[x])
+                        if self.LSTW_collection.findItems(collist[x],QtCore.Qt.MatchFlag.MatchFixedString):
+                            # print("重複Item")
+                            self.LSTW_collection.addItem(collist[x])
+                        else:
+                            print('重複Item %s add' %(collist[x]))
         else:
             print("DB 不存在")
          #collect = db.
