@@ -18,10 +18,17 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         #add initial procedure
         self.PBTN.clicked.connect(self.pushBTN_click)
+        # self.LAB_dmsg.text="hello"
 
-
-    def pushBTN_click(self):   
-        print("push button press here")
+    def showStatus(self,dmsglevel, txtbody):
+        if dmsglevel==1:
+            # msg=self.LAB_dmsg.text()
+            print(txtbody)
+            self.LAB_dmsg.setText(self.LAB_dmsg.text() + txtbody)
+            print(self.LAB_dmsg.text() + txtbody)
+        # else:
+            print("showStatus-"+txtbody)
+    def DBfind(self):
         dblist = client.list_database_names()
 
         mydb=client["ST50X"]
@@ -39,14 +46,18 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 if (len(collist)>0):
                     for x in range(len(collist)):
                         print(collist[x])
-                        if self.LSTW_collection.findItems(collist[x],QtCore.Qt.MatchFlag.MatchFixedString):
-                            # print("重複Item")
-                            self.LSTW_collection.addItem(collist[x])
-                        else:
-                            print('重複Item %s add' %(collist[x]))
+                        # if self.LSTW_collection.findItems(collist[x],QtCore.Qt.MatchFlag.MatchFixedString):
+                        #     # print("重複Item")
+                        #     self.LSTW_collection.addItem(collist[x])
+                        # else:
+                        #     print('重複Item %s add' %(collist[x]))
         else:
             print("DB 不存在")
          #collect = db.
+    def pushBTN_click(self):   
+        print("push button press here")
+        self.showStatus(1,"call showStatus")
+        # self.LAB_dmsg.setText("hello")
 
 if __name__ == "__main__":
 

@@ -67,6 +67,11 @@ class Ui_MainWindow(object):
         self.dateTimeEdit = QtWidgets.QDateTimeEdit(self.centralwidget)
         self.dateTimeEdit.setGeometry(QtCore.QRect(170, 530, 194, 22))
         self.dateTimeEdit.setObjectName("dateTimeEdit")
+        self.LAB_dmsg = QtWidgets.QLabel(self.centralwidget)
+        self.LAB_dmsg.setGeometry(QtCore.QRect(390, 140, 271, 361))
+        self.LAB_dmsg.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.LAB_dmsg.setWordWrap(True)
+        self.LAB_dmsg.setObjectName("LAB_dmsg")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 21))
@@ -82,7 +87,7 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.PBTN.setText(_translate("MainWindow", "PushButton"))
+        self.PBTN.setText(_translate("MainWindow", "CheckDBs"))
         self.groupBox.setTitle(_translate("MainWindow", "MongoDB"))
         self.RBTN_local.setText(_translate("MainWindow", "Local"))
         self.RBTN_cloud.setText(_translate("MainWindow", "Cloud"))
@@ -94,3 +99,4 @@ class Ui_MainWindow(object):
         self.RBTN_update.setText(_translate("MainWindow", "Update"))
         self.RBTN_delete.setText(_translate("MainWindow", "Delete"))
         self.label_3.setText(_translate("MainWindow", "Collections"))
+        self.LAB_dmsg.setText(_translate("MainWindow", "show message here"))
