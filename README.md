@@ -1,5 +1,5 @@
 - 👋 Hi, I’m @avenboss
-- 👀 I’m interested in IoT application project
+- 👀 I’m interested in pyQt5 app in operating MongoDB
 - 🌱 I’m currently learning node side firmware on STM32WL platform
 - 💞️ I’m looking to collaborate on development of data collection template via host side connected with sensor node.
 - 📫 How to reach me ? please leave your message or send mail to me
