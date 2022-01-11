@@ -30,16 +30,21 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         self.PBTNT.clicked.connect(self.myTest1)
         self.PBTNT_2.clicked.connect(self.myTest2)
+        self.PBTNT_pause.clicked.connect(self.myTest3)
+        self.PBTNT_comtx.clicked.connect(self.myUartTX)
 
     def myTest1(self):
-        #force open com port
+    #serial test - force open com port
         try:
             self.mycomport.close()
             self.mycomport.open()
             if self.mycomport.isOpen() :
                 print("Port was Opened")
+                #change state
                 self.PBTNT.setChecked(True) 
                 self.LAB_error.clear()
+                #invoke RX
+                self.myUartCtrl("RX")
         except SerialException as e:
                 print("Port Open Failed- No such COM port")
                 print(e)
@@ -52,29 +57,59 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # print(self.PBTNT.isChecked())
         # self.showStatus("hello" )
     def myTest2(self):
+    #thread test with QThread
         self.thread4=MyThread(4, 200) # label, delay
         self.thread4.callback.connect(self.drawUi)
-        self.thread4.start()    
+        self.thread4.start() 
+
+           
+    def myTest3(self):
+        # self.thread4.runFlag=False #quit thread
+        try:
+            self.thread4.passFlag= ~self.thread4.passFlag
+        except:
+            print("No thread Created") 
+        # self.thread4.passFlag=True
+    def myUartTX(self):
+        if self.mycomport.isOpen():
+            print("here")
+            self.myUartCtrl("TX")
+        else:
+            print("port not open")
+    def myUartRX(self):
+        # if self.mycomport.isOpen() :
+        # while True:
+        #     time.sleep(0.01)
+            while self.mycomport.in_waiting:
+                data_raw=self.mycomport.readline()
+                data=data_raw.decode()
+                print('receive raw data :',data_raw)
+                print('decode data :',data)
+    def myUartCtrl(self,myCMD):
+        if myCMD=="init":
+            self.showStatus("Uart init")
+        elif myCMD=="TX":
+            self.showStatus("Uart Transmit")
+            self.mycomport.write(b'AT\r\n')
+            print("TX OK")
+        else:#RX
+            self.showStatus("Uart else event(RX)")
+            self.thread2=MyThread(2, 10) # label, delay
+            self.thread2.callback.connect(self.myUartRX)
+            self.thread2.start() 
 
     def drawUi(self,index,label):
         if label==4:
             self.showTimer()
         else:
             print("Thread invoke failed")
-
-    def myUartCtrl(self,myCMD):
-        if myCMD=="init":
-            showStatus("Uart init")
-        elif myCMD=="TX":
-            showStatus("Uart Transmit")
-        else:
-            showStatus("Uart else event")
           
     def showTimer(self):
         self.end_time=time.time()
         self.LAB_runtime.setText(str(self.end_time-self.start_time))
         self.LAB_datetime.setText(str(datetime.datetime.now()))
-
+        self.LAB_showflag.setText(str(self.thread4.passFlag))
+        self.LAB_showcount.setText(str(self.thread4.count))
     def showStatus(self, mystr):
         mypreTxt= self.LAB_dmsg.text()
         mytick = str(time.time())

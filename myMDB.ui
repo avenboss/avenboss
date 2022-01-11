@@ -2,13 +2,22 @@
 <ui version="4.0">
  <class>MainWindow</class>
  <widget class="QMainWindow" name="MainWindow">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>770</width>
+    <width>882</width>
     <height>598</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+    <horstretch>2</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
@@ -18,8 +27,8 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>50</y>
-      <width>75</width>
+      <y>20</y>
+      <width>161</width>
       <height>23</height>
      </rect>
     </property>
@@ -30,9 +39,9 @@
    <widget class="QGroupBox" name="groupBox">
     <property name="geometry">
      <rect>
-      <x>170</x>
-      <y>30</y>
-      <width>151</width>
+      <x>10</x>
+      <y>50</y>
+      <width>171</width>
       <height>51</height>
      </rect>
     </property>
@@ -72,8 +81,8 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>170</x>
-      <y>230</y>
+      <x>20</x>
+      <y>260</y>
       <width>61</width>
       <height>16</height>
      </rect>
@@ -85,8 +94,8 @@
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>170</x>
-      <y>80</y>
+      <x>20</x>
+      <y>107</y>
       <width>47</width>
       <height>12</height>
      </rect>
@@ -98,8 +107,8 @@
    <widget class="QComboBox" name="CBOX_db">
     <property name="geometry">
      <rect>
-      <x>170</x>
-      <y>93</y>
+      <x>20</x>
+      <y>120</y>
       <width>69</width>
       <height>22</height>
      </rect>
@@ -108,9 +117,9 @@
    <widget class="QPlainTextEdit" name="PTBOX_document">
     <property name="geometry">
      <rect>
-      <x>170</x>
-      <y>250</y>
-      <width>201</width>
+      <x>20</x>
+      <y>280</y>
+      <width>161</width>
       <height>251</height>
      </rect>
     </property>
@@ -118,9 +127,9 @@
    <widget class="QGroupBox" name="groupBox_2">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>90</y>
-      <width>120</width>
+      <x>100</x>
+      <y>120</y>
+      <width>81</width>
       <height>141</height>
      </rect>
     </property>
@@ -186,8 +195,8 @@
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>170</x>
-      <y>120</y>
+      <x>20</x>
+      <y>150</y>
       <width>47</width>
       <height>12</height>
      </rect>
@@ -199,19 +208,28 @@
    <widget class="QListWidget" name="LSTW_collection">
     <property name="geometry">
      <rect>
-      <x>170</x>
-      <y>140</y>
-      <width>201</width>
+      <x>20</x>
+      <y>170</y>
+      <width>71</width>
       <height>91</height>
      </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::WinPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Sunken</enum>
     </property>
    </widget>
    <widget class="QDateTimeEdit" name="dateTimeEdit">
     <property name="geometry">
      <rect>
-      <x>170</x>
-      <y>530</y>
-      <width>194</width>
+      <x>20</x>
+      <y>533</y>
+      <width>161</width>
       <height>22</height>
      </rect>
     </property>
@@ -219,10 +237,10 @@
    <widget class="QLabel" name="LAB_dmsg">
     <property name="geometry">
      <rect>
-      <x>390</x>
-      <y>160</y>
+      <x>540</x>
+      <y>70</y>
       <width>271</width>
-      <height>341</height>
+      <height>431</height>
      </rect>
     </property>
     <property name="frameShape">
@@ -244,9 +262,9 @@
    <widget class="QPushButton" name="PBTNT">
     <property name="geometry">
      <rect>
-      <x>390</x>
-      <y>40</y>
-      <width>75</width>
+      <x>240</x>
+      <y>13</y>
+      <width>91</width>
       <height>23</height>
      </rect>
     </property>
@@ -272,9 +290,9 @@
    <widget class="QPushButton" name="PBTNT_2">
     <property name="geometry">
      <rect>
-      <x>470</x>
-      <y>40</y>
-      <width>71</width>
+      <x>330</x>
+      <y>13</y>
+      <width>91</width>
       <height>23</height>
      </rect>
     </property>
@@ -300,9 +318,9 @@
    <widget class="QLabel" name="LAB_runtime">
     <property name="geometry">
      <rect>
-      <x>390</x>
-      <y>530</y>
-      <width>271</width>
+      <x>240</x>
+      <y>533</y>
+      <width>191</width>
       <height>21</height>
      </rect>
     </property>
@@ -325,9 +343,9 @@
    <widget class="QLabel" name="LAB_datetime">
     <property name="geometry">
      <rect>
-      <x>390</x>
-      <y>506</y>
-      <width>271</width>
+      <x>240</x>
+      <y>509</y>
+      <width>191</width>
       <height>21</height>
      </rect>
     </property>
@@ -350,9 +368,9 @@
    <widget class="QPushButton" name="PBTNT_3">
     <property name="geometry">
      <rect>
-      <x>390</x>
-      <y>70</y>
-      <width>151</width>
+      <x>330</x>
+      <y>43</y>
+      <width>181</width>
       <height>23</height>
      </rect>
     </property>
@@ -378,8 +396,8 @@
    <widget class="QLabel" name="LAB_error">
     <property name="geometry">
      <rect>
-      <x>390</x>
-      <y>100</y>
+      <x>540</x>
+      <y>10</y>
       <width>271</width>
       <height>51</height>
      </rect>
@@ -403,13 +421,182 @@
      <cstring></cstring>
     </property>
    </widget>
+   <widget class="QPushButton" name="PBTNT_pause">
+    <property name="geometry">
+     <rect>
+      <x>420</x>
+      <y>13</y>
+      <width>91</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="text">
+     <string>Pause</string>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+    <property name="autoDefault">
+     <bool>false</bool>
+    </property>
+    <property name="default">
+     <bool>false</bool>
+    </property>
+    <property name="flat">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="LAB_showflag">
+    <property name="geometry">
+     <rect>
+      <x>440</x>
+      <y>509</y>
+      <width>71</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Box</enum>
+    </property>
+    <property name="text">
+     <string>show Flag</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+    </property>
+    <property name="wordWrap">
+     <bool>false</bool>
+    </property>
+    <property name="buddy">
+     <cstring></cstring>
+    </property>
+   </widget>
+   <widget class="QLabel" name="LAB_showcount">
+    <property name="geometry">
+     <rect>
+      <x>440</x>
+      <y>533</y>
+      <width>71</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Box</enum>
+    </property>
+    <property name="text">
+     <string>show Count</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+    </property>
+    <property name="wordWrap">
+     <bool>false</bool>
+    </property>
+    <property name="buddy">
+     <cstring></cstring>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="PBTNT_comtx">
+    <property name="geometry">
+     <rect>
+      <x>240</x>
+      <y>69</y>
+      <width>91</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="text">
+     <string>ComTX</string>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+    <property name="autoDefault">
+     <bool>false</bool>
+    </property>
+    <property name="default">
+     <bool>false</bool>
+    </property>
+    <property name="flat">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="PBTNT_comclose">
+    <property name="geometry">
+     <rect>
+      <x>240</x>
+      <y>43</y>
+      <width>91</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="text">
+     <string>CloseCom</string>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+    <property name="autoDefault">
+     <bool>false</bool>
+    </property>
+    <property name="default">
+     <bool>false</bool>
+    </property>
+    <property name="flat">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QListWidget" name="LSTW_atcmds">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>70</y>
+      <width>171</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>AT</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>AT?</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>ATZ</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>AT+VER=?</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>AT+IEUID=?</string>
+     </property>
+    </item>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>770</width>
+     <width>882</width>
      <height>21</height>
     </rect>
    </property>

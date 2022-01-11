@@ -9,22 +9,25 @@ class MyThread(QThread):
         self.passFlag= False #skip counting in while loop
         self.label=label
         self.delay=delay
+        self.count=0
         
     def __del__(self):
         self.runFlag = False
         self.wait()
 
     def run(self):
-        print("thread run " + str(self.label))
+        print('thread run %s %s' % (str(self.label),self.currentThreadId()))
         while_index=0
         while self.runFlag:
-            self.callback.emit(while_index, self.label) #傳遞參數(整數1，整數2)
-            if self.label==3 :
+            self.msleep(self.delay)
+            self.count=while_index
+            if self.label==4 :
             #     print(threading.currentThread().getName() + " / " + str(index)) #import threading
                 if self.passFlag :
+                    # print('while_index =%s' %while_index)
                     continue
-            self.msleep(self.delay)
             while_index+=1
+            self.callback.emit(while_index, self.label) #傳遞參數(整數1，整數2)
 #       print(threading.currentThread().getName() + " / End : " + str(index)) #import threading
         print("thread quit " + str(self.label))
         self.quit()
