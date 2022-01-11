@@ -1,5 +1,6 @@
 import sys
 import time
+import datetime
 import serial
 
 from PyQt5.QtWidgets import QApplication, QMainWindow
@@ -18,9 +19,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         super(MainWindow, self).__init__(parent)
         self.setupUi(self)
 
+        #init & configure
         # mycomport=serial.Serial()
         self.mycomport.port="COM4"
         self.mycomport.baudrate=9600
+
+        self.LAB_error.setStyleSheet("color:red;")
+
+        self.start_time = self.end_time = time.time()
 
         self.PBTNT.clicked.connect(self.myTest1)
         self.PBTNT_2.clicked.connect(self.myTest2)
@@ -33,8 +39,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             if self.mycomport.isOpen() :
                 print("Port was Opened")
                 self.PBTNT.setChecked(True) 
-        except SerialException:
+                self.LAB_error.clear()
+        except SerialException as e:
                 print("Port Open Failed- No such COM port")
+                print(e)
+                
+                self.LAB_error.setText(str(e))
                 self.PBTNT.setChecked(False) 
         # else:
         #     print("Port is close and opening")
@@ -42,10 +52,16 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # print(self.PBTNT.isChecked())
         # self.showStatus("hello" )
     def myTest2(self):
-        self.thread4=MyThread(4, 200)
+        self.thread4=MyThread(4, 200) # label, delay
         self.thread4.callback.connect(self.drawUi)
         self.thread4.start()    
-          
+
+    def drawUi(self,index,label):
+        if label==4:
+            self.showTimer()
+        else:
+            print("Thread invoke failed")
+
     def myUartCtrl(self,myCMD):
         if myCMD=="init":
             showStatus("Uart init")
@@ -54,7 +70,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         else:
             showStatus("Uart else event")
           
-
+    def showTimer(self):
+        self.end_time=time.time()
+        self.LAB_runtime.setText(str(self.end_time-self.start_time))
+        self.LAB_datetime.setText(str(datetime.datetime.now()))
 
     def showStatus(self, mystr):
         mypreTxt= self.LAB_dmsg.text()
