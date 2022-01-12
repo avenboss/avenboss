@@ -240,7 +240,7 @@
       <x>540</x>
       <y>70</y>
       <width>271</width>
-      <height>431</height>
+      <height>481</height>
      </rect>
     </property>
     <property name="frameShape">
@@ -589,6 +589,34 @@
       <string>AT+IEUID=?</string>
      </property>
     </item>
+   </widget>
+   <widget class="QLabel" name="LAB_comrxbuf">
+    <property name="geometry">
+     <rect>
+      <x>240</x>
+      <y>150</y>
+      <width>271</width>
+      <height>341</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Box</enum>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
+    <property name="buddy">
+     <cstring></cstring>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
