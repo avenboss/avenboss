@@ -25,6 +25,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.mycomport.baudrate=9600
 
         self.LAB_error.setStyleSheet("color:red;")
+        self.LAB_comrxbuf.setStyleSheet("background-color:white;")
 
         self.start_time = self.end_time = time.time()
 
@@ -42,14 +43,15 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 print("Port was Opened")
                 #change state
                 self.PBTNT.setChecked(True) 
-                self.LAB_error.clear()
+                self.flab_error("","clear")
+                # self.LAB_error.clear()
                 #invoke RX
                 self.myUartCtrl("RX")
         except SerialException as e:
                 print("Port Open Failed- No such COM port")
                 print(e)
-                
-                self.LAB_error.setText(str(e))
+                self.flab_error(str(e),"show")
+                # self.LAB_error.setText(str(e))
                 self.PBTNT.setChecked(False) 
         # else:
         #     print("Port is close and opening")
@@ -85,6 +87,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 data=data_raw.decode()
                 print('receive raw data :',data_raw)
                 print('decode data :',data)
+
     def myUartCtrl(self,myCMD):
         if myCMD=="init":
             self.showStatus("Uart init")
@@ -93,8 +96,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             cmdstr=self.LSTW_atcmds.currentItem().text()+ "\r\n"
             vbytearray=bytearray(cmdstr.encode())
             self.mycomport.write(vbytearray) #default b'AT\r\n'
-            print('TX OK - %s' %cmdstr)
-            print(vbytearray)
+            self.flab_dmsg('TX OK - %s' %cmdstr,1)#print
+            # print(vbytearray)
         else:#RX
             self.showStatus("Uart else event(RX)")
             self.thread2=MyThread(2, 10) # label, delay
@@ -114,10 +117,27 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.LAB_showflag.setText(str(self.thread4.passFlag))
         self.LAB_showcount.setText(str(self.thread4.count))
     def showStatus(self, mystr):
-        mypreTxt= self.LAB_dmsg.text()
+        
         mytick = str(time.time())
-        self.LAB_dmsg.setText(mystr +"- " + mytick + "\r\n"  + mypreTxt )#+ mytick)
+        # self.LAB_dmsg.setText(mystr +"- " + mytick + "\r\n"  + mypreTxt )#+ mytick)
+        self.flab_dmsg(mystr, 1)
 
+    def flab_dmsg(self,pstr,cmd): #handle Label_dmsg
+        mypreTxt= self.LAB_dmsg.text()
+        if cmd==1:
+            self.LAB_dmsg.setText(pstr+"\r\n"+mypreTxt)
+        else:
+            self.flab_error("lab_dmsg", "")
+
+    def flab_error(self,pstr,cmd): #handle Label_error
+        if cmd=="clear":
+            self.LAB_error.clear()
+        elif cmd=="show":
+            self.LAB_error.setText(pstr)
+        else:
+            self.LAB_error.setText("Abnormal -" + pstr)
+    def printmsg(self,pstr):
+        print(pstr)
 
 if __name__ == "__main__":
 
