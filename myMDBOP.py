@@ -90,8 +90,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.showStatus("Uart init")
         elif myCMD=="TX":
             self.showStatus("Uart Transmit")
-            self.mycomport.write(b'AT\r\n')
-            print("TX OK")
+            cmdstr=self.LSTW_atcmds.currentItem().text()+ "\r\n"
+            vbytearray=bytearray(cmdstr.encode())
+            self.mycomport.write(vbytearray) #default b'AT\r\n'
+            print('TX OK - %s' %cmdstr)
+            print(vbytearray)
         else:#RX
             self.showStatus("Uart else event(RX)")
             self.thread2=MyThread(2, 10) # label, delay
