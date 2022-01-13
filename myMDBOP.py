@@ -22,6 +22,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         #init & configure
         # mycomport=serial.Serial()
         #self.mycomport.port="COM4"
+        #ls -la /dev/tty.* 
         self.mycomport.port="/dev/tty.usbserial-DM00ZZWB"
         self.mycomport.baudrate=9600
 
